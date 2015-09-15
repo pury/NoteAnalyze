@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang = "zh-cmn-Hans">
+<head>
+<meta charset = "utf-8">
+<title>记事册</title>
+<meta name = "keywords" content = "">
+<meta name = "description" content = "">
+<meta name = "author" content = "">
+<link rel = "stylesheet" href = "css/style.css" type = "text/css">
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/main.js"></script> 
+<meta >
+</head>
+<body onload = "main()">
+</br>
+<table id = "info" width="1170"  border="1" align="center">
+  <tr>
+    <th class = "table_title_bg" height="23" colspan="11" scope="col">管理中心</th>
+  </tr>
+    <tr align="center">
+		<td class = "table_info_td">日期</td>
+		<td id = "today"  colspan="3">日期</td>
+	</tr>
+	<tr align="center">
+		<td class = "table_info_td">未开始</td>
+		<td id = "num1">22件</td>
+		<td><button onclick = "show(0)">显示</button></td>
+		<td rowspan="5" ><button onclick = "show(55)">隐藏</button></td>
+	</tr>
+	<tr align="center">
+		<td class = "table_info_td">进行中</td>
+		<td id = "num2">23件</td>
+		<td><button onclick = "show(1)">显示</button></td>
+	</tr>
+	<tr align="center">
+		<td class = "table_info_td">已完成</td>
+		<td id = "num3">6件</td>
+		<td><button onclick = "show(2)">显示</button></td>
+	</tr>
+	<tr align="center">
+		<td class = "table_info_td">今日开始业务</td>
+		<td colspan="1" id = "today_begin"></td>
+		<td><button onclick = "show(3)">显示</button></td>
+	</tr>
+	<tr align="center">
+		<td class = "table_info_td">今日截止业务</td>
+		<td colspan="1" id = "today_end"></td>
+		<td><button onclick = "show(4)">显示</button></td>
+	</tr>
+</table>
+</br></br></br></br>
+<table id = "note" width="1170" height="129" border="1" align="center">
+  <tr>
+    <th class = "table_title_bg" height="23" colspan="11" scope="col">记事簿</th>
+  </tr>
+</table>
+</body>

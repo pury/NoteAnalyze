@@ -1,0 +1,69 @@
+﻿console.time('Server startup time'); 
+var http = require("http"),
+url = require("url"),
+path = require("path"),
+fs = require("fs");
+
+http.createServer(function (req, res) {
+	var pathname = __dirname + url.parse(req.url).pathname;
+	if (path.extname(pathname) == "") {
+		pathname += "./";
+	}
+	if (pathname.charAt(pathname.length - 1) == "/") {
+		pathname += "index.html";
+	}
+
+	fs.exists(pathname, function (exists) {
+		if (exists) {
+			switch (path.extname(pathname)) {
+			case ".html":
+				res.writeHead(200, {
+					"Content-Type" : "text/html"
+				});
+				break;
+			case ".js":
+				res.writeHead(200, {
+					"Content-Type" : "text/javascript"
+				});
+				break;
+			case ".css":
+				res.writeHead(200, {
+					"Content-Type" : "text/css"
+				});
+				break;
+			case ".gif":
+				res.writeHead(200, {
+					"Content-Type" : "image/gif"
+				});
+				break;
+			case ".jpg":
+				res.writeHead(200, {
+					"Content-Type" : "image/jpeg"
+				});
+				break;
+			case ".png":
+				res.writeHead(200, {
+					"Content-Type" : "image/png"
+				});
+				break;
+			default:
+				res.writeHead(200, {
+					"Content-Type" : "application/octet-stream"
+				});
+			}
+
+			fs.readFile(pathname, function (err, data) {
+				res.end(data);
+			});
+		} else {
+			res.writeHead(404, {
+				"Content-Type" : "text/html"
+			});
+			res.end("404 Not Found");
+		}
+	});
+
+}).listen(8080, "127.0.0.1");
+console.timeEnd('Server startup time'); 
+console.log("服务器成功启动...");
+console.log("请使用浏览器访问 http://127.0.0.1:8080/");
